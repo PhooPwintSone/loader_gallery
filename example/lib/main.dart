@@ -15,7 +15,14 @@ class LoaderGalleryExampleApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text('Loader Gallery')),
         body: Center(
-          child: LoaderGallery.bouncingBall(color: Colors.green, size: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              LoaderGallery.bouncingBall(color: Colors.blue, size: 40),
+              const SizedBox(height: 60),
+              LoaderGallery.bouncingDots(color: Colors.deepPurple, size: 12),
+            ],
+          ),
         ),
       ),
     );
