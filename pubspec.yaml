@@ -1,7 +1,7 @@
 name: loader_gallery
-description: "A new Flutter package project."
+description: A collection of beautiful and customizable loading animations for Flutter.
 version: 0.0.1
-homepage:
+repository: https://github.com/PhooPwintSone/loader_gallery
 
 environment:
   sdk: ^3.12.1
