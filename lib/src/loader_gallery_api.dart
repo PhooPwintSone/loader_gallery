@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'loaders/bouncing_ball_loader.dart';
 import 'loaders/bouncing_dots_loader.dart';
 import 'loaders/chasing_dots_loader.dart';
+import 'loaders/coin_flip_loader.dart';
 
 class LoaderGallery {
   LoaderGallery._();
@@ -32,5 +33,20 @@ class LoaderGallery {
     Duration duration = const Duration(milliseconds: 1500),
   }) {
     return ChasingDotsLoader(color: color, size: size, duration: duration);
+  }
+
+  //Coin Flip
+  static Widget coinFlip({
+    Color color = Colors.white,
+    Color edgeColor = Colors.amber,
+    double size = 50.0,
+    Duration duration = const Duration(milliseconds: 1000),
+  }) {
+    return CoinFlipLoader(
+      color: color,
+      edgeColor: edgeColor,
+      size: size,
+      duration: duration,
+    );
   }
 }

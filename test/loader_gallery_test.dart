@@ -5,6 +5,7 @@ import 'package:loader_gallery/loader_gallery.dart';
 import 'package:loader_gallery/src/loaders/bouncing_ball_loader.dart';
 import 'package:loader_gallery/src/loaders/bouncing_dots_loader.dart';
 import 'package:loader_gallery/src/loaders/chasing_dots_loader.dart';
+import 'package:loader_gallery/src/loaders/coin_flip_loader.dart';
 
 void main() {
   group('LoaderGallery', () {
@@ -80,5 +81,33 @@ void main() {
 
       expect(find.byType(ChasingDotsLoader), findsOneWidget);
     });
+  });
+
+  // Coin Flip Loader
+  testWidgets('coinFlip renders correctly', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LoaderGallery.coinFlip(color: Colors.blue, size: 50),
+        ),
+      ),
+    );
+
+    expect(find.byType(CoinFlipLoader), findsOneWidget);
+  });
+
+  testWidgets('coinFlip accepts customization', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LoaderGallery.coinFlip(color: Colors.red, size: 40),
+        ),
+      ),
+    );
+
+    final loader = tester.widget<CoinFlipLoader>(find.byType(CoinFlipLoader));
+
+    expect(loader.color, Colors.red);
+    expect(loader.size, 40);
   });
 }
