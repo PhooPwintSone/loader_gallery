@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:loader_gallery/loader_gallery.dart';
+//
 import 'package:loader_gallery/src/loaders/bouncing_ball_loader.dart';
 import 'package:loader_gallery/src/loaders/bouncing_dots_loader.dart';
+import 'package:loader_gallery/src/loaders/chasing_dots_loader.dart';
 
 void main() {
   group('LoaderGallery', () {
-    //Bouncing Ball Loader
+    // Bouncing Ball Loader
     testWidgets('bouncingBall renders correctly', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
@@ -35,35 +37,48 @@ void main() {
       expect(loader.color, Colors.red);
       expect(loader.size, 50);
     });
-  });
 
-  //Bouncing Dots Loader
-  testWidgets('bouncingDots renders correctly', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: LoaderGallery.bouncingDots(color: Colors.blue, size: 14),
+    // Bouncing Dots Loader
+    testWidgets('bouncingDots renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.bouncingDots(color: Colors.blue, size: 14),
+          ),
         ),
-      ),
-    );
+      );
 
-    expect(find.byType(BouncingDotsLoader), findsOneWidget);
-  });
+      expect(find.byType(BouncingDotsLoader), findsOneWidget);
+    });
 
-  testWidgets('bouncingDots accepts customization', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: LoaderGallery.bouncingDots(color: Colors.red, size: 16),
+    testWidgets('bouncingDots accepts customization', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.bouncingDots(color: Colors.red, size: 16),
+          ),
         ),
-      ),
-    );
+      );
 
-    final loader = tester.widget<BouncingDotsLoader>(
-      find.byType(BouncingDotsLoader),
-    );
+      final loader = tester.widget<BouncingDotsLoader>(
+        find.byType(BouncingDotsLoader),
+      );
 
-    expect(loader.color, Colors.red);
-    expect(loader.size, 16);
+      expect(loader.color, Colors.red);
+      expect(loader.size, 16);
+    });
+
+    // Chasing Dots Loader
+    testWidgets('chasingDots renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.chasingDots(color: Colors.deepPurple, size: 50),
+          ),
+        ),
+      );
+
+      expect(find.byType(ChasingDotsLoader), findsOneWidget);
+    });
   });
 }

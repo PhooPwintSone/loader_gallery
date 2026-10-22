@@ -21,6 +21,8 @@ class LoaderGalleryExampleApp extends StatelessWidget {
               LoaderGallery.bouncingBall(color: Colors.blue, size: 40),
               const SizedBox(height: 60),
               LoaderGallery.bouncingDots(color: Colors.deepPurple, size: 12),
+              const SizedBox(height: 60),
+              LoaderGallery.chasingDots(color: Colors.deepPurple, size: 50),
             ],
           ),
         ),
