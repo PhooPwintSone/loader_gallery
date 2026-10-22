@@ -6,6 +6,7 @@ import 'package:loader_gallery/src/loaders/bouncing_ball_loader.dart';
 import 'package:loader_gallery/src/loaders/bouncing_dots_loader.dart';
 import 'package:loader_gallery/src/loaders/chasing_dots_loader.dart';
 import 'package:loader_gallery/src/loaders/coin_flip_loader.dart';
+import 'package:loader_gallery/src/loaders/double_bounce_loader.dart';
 
 void main() {
   group('LoaderGallery', () {
@@ -110,4 +111,36 @@ void main() {
     expect(loader.color, Colors.red);
     expect(loader.size, 40);
   });
+
+  // Double Bounce Loader
+  testWidgets('doubleBounce renders correctly', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LoaderGallery.doubleBounce(color: Colors.blue, size: 60),
+        ),
+      ),
+    );
+
+    expect(find.byType(DoubleBounceLoader), findsOneWidget);
+  });
+
+  testWidgets('doubleBounce accepts customization', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LoaderGallery.doubleBounce(color: Colors.red, size: 70),
+        ),
+      ),
+    );
+
+    final loader = tester.widget<DoubleBounceLoader>(
+      find.byType(DoubleBounceLoader),
+    );
+
+    expect(loader.color, Colors.red);
+    expect(loader.size, 70);
+  });
+
+  /// end
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+//
 import 'loaders/bouncing_ball_loader.dart';
 import 'loaders/bouncing_dots_loader.dart';
 import 'loaders/chasing_dots_loader.dart';
 import 'loaders/coin_flip_loader.dart';
+import 'loaders/double_bounce_loader.dart';
 
 class LoaderGallery {
   LoaderGallery._();
@@ -48,5 +50,14 @@ class LoaderGallery {
       size: size,
       duration: duration,
     );
+  }
+
+  //Double Bounce
+  static Widget doubleBounce({
+    Color color = Colors.white,
+    double size = 60.0,
+    Duration duration = const Duration(milliseconds: 2000),
+  }) {
+    return DoubleBounceLoader(color: color, size: size, duration: duration);
   }
 }
