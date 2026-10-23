@@ -8,6 +8,7 @@ import 'package:loader_gallery/src/loaders/chasing_dots_loader.dart';
 import 'package:loader_gallery/src/loaders/coin_flip_loader.dart';
 import 'package:loader_gallery/src/loaders/double_bounce_loader.dart';
 import 'package:loader_gallery/src/loaders/dual_ring_loader.dart';
+import 'package:loader_gallery/src/loaders/ellipse_swap_loader.dart';
 
 void main() {
   group('LoaderGallery', () {
@@ -170,6 +171,38 @@ void main() {
       expect(loader.color, Colors.blue);
       expect(loader.size, 60);
       expect(loader.strokeWidth, 4);
+      expect(loader.duration, const Duration(milliseconds: 1000));
+    });
+
+    testWidgets('ellipseSwap renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: Scaffold(body: LoaderGallery.ellipseSwap())),
+      );
+
+      expect(find.byType(EllipseSwapLoader), findsOneWidget);
+    });
+
+    testWidgets('ellipseSwap accepts customization', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.ellipseSwap(
+              color: Colors.blue,
+              size: 60,
+              dotSize: 14,
+              duration: const Duration(milliseconds: 1000),
+            ),
+          ),
+        ),
+      );
+
+      final loader = tester.widget<EllipseSwapLoader>(
+        find.byType(EllipseSwapLoader),
+      );
+
+      expect(loader.color, Colors.blue);
+      expect(loader.size, 60);
+      expect(loader.dotSize, 14);
       expect(loader.duration, const Duration(milliseconds: 1000));
     });
 

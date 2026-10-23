@@ -7,6 +7,7 @@ import 'loaders/chasing_dots_loader.dart';
 import 'loaders/coin_flip_loader.dart';
 import 'loaders/double_bounce_loader.dart';
 import 'loaders/dual_ring_loader.dart';
+import 'loaders/ellipse_swap_loader.dart';
 
 class LoaderGallery {
   LoaderGallery._();
@@ -73,6 +74,21 @@ class LoaderGallery {
       color: color,
       size: size,
       strokeWidth: strokeWidth,
+      duration: duration,
+    );
+  }
+
+  // Ellipse Swap
+  static Widget ellipseSwap({
+    Color color = Colors.white,
+    double size = 50.0,
+    double dotSize = 12.0,
+    Duration duration = const Duration(milliseconds: 1500),
+  }) {
+    return EllipseSwapLoader(
+      color: color,
+      size: size,
+      dotSize: dotSize,
       duration: duration,
     );
   }
