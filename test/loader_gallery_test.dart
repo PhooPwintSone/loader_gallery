@@ -7,6 +7,7 @@ import 'package:loader_gallery/src/loaders/bouncing_dots_loader.dart';
 import 'package:loader_gallery/src/loaders/chasing_dots_loader.dart';
 import 'package:loader_gallery/src/loaders/coin_flip_loader.dart';
 import 'package:loader_gallery/src/loaders/double_bounce_loader.dart';
+import 'package:loader_gallery/src/loaders/dual_ring_loader.dart';
 
 void main() {
   group('LoaderGallery', () {
@@ -82,64 +83,97 @@ void main() {
 
       expect(find.byType(ChasingDotsLoader), findsOneWidget);
     });
-  });
 
-  // Coin Flip Loader
-  testWidgets('coinFlip renders correctly', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: LoaderGallery.coinFlip(color: Colors.blue, size: 50),
+    testWidgets('dualRing renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: Scaffold(body: LoaderGallery.dualRing())),
+      );
+
+      expect(find.byType(DualRingLoader), findsOneWidget);
+    });
+
+    // Coin Flip Loader
+    testWidgets('coinFlip renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.coinFlip(color: Colors.blue, size: 50),
+          ),
         ),
-      ),
-    );
+      );
 
-    expect(find.byType(CoinFlipLoader), findsOneWidget);
-  });
+      expect(find.byType(CoinFlipLoader), findsOneWidget);
+    });
 
-  testWidgets('coinFlip accepts customization', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: LoaderGallery.coinFlip(color: Colors.red, size: 40),
+    testWidgets('coinFlip accepts customization', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.coinFlip(color: Colors.red, size: 40),
+          ),
         ),
-      ),
-    );
+      );
 
-    final loader = tester.widget<CoinFlipLoader>(find.byType(CoinFlipLoader));
+      final loader = tester.widget<CoinFlipLoader>(find.byType(CoinFlipLoader));
 
-    expect(loader.color, Colors.red);
-    expect(loader.size, 40);
-  });
+      expect(loader.color, Colors.red);
+      expect(loader.size, 40);
+    });
 
-  // Double Bounce Loader
-  testWidgets('doubleBounce renders correctly', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: LoaderGallery.doubleBounce(color: Colors.blue, size: 60),
+    // Double Bounce Loader
+    testWidgets('doubleBounce renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.doubleBounce(color: Colors.blue, size: 60),
+          ),
         ),
-      ),
-    );
+      );
 
-    expect(find.byType(DoubleBounceLoader), findsOneWidget);
-  });
+      expect(find.byType(DoubleBounceLoader), findsOneWidget);
+    });
 
-  testWidgets('doubleBounce accepts customization', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: LoaderGallery.doubleBounce(color: Colors.red, size: 70),
+    testWidgets('doubleBounce accepts customization', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.doubleBounce(color: Colors.red, size: 70),
+          ),
         ),
-      ),
-    );
+      );
 
-    final loader = tester.widget<DoubleBounceLoader>(
-      find.byType(DoubleBounceLoader),
-    );
+      final loader = tester.widget<DoubleBounceLoader>(
+        find.byType(DoubleBounceLoader),
+      );
 
-    expect(loader.color, Colors.red);
-    expect(loader.size, 70);
+      expect(loader.color, Colors.red);
+      expect(loader.size, 70);
+    });
+
+    // dual ring
+    testWidgets('dualRing accepts customization', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.dualRing(
+              color: Colors.blue,
+              size: 60,
+              strokeWidth: 4,
+              duration: const Duration(milliseconds: 1000),
+            ),
+          ),
+        ),
+      );
+
+      final loader = tester.widget<DualRingLoader>(find.byType(DualRingLoader));
+
+      expect(loader.color, Colors.blue);
+      expect(loader.size, 60);
+      expect(loader.strokeWidth, 4);
+      expect(loader.duration, const Duration(milliseconds: 1000));
+    });
+
+    //
   });
 
   /// end

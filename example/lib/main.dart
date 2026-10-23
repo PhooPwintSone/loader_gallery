@@ -30,6 +30,8 @@ class LoaderGalleryExampleApp extends StatelessWidget {
               ),
               const SizedBox(height: 60),
               LoaderGallery.doubleBounce(color: Colors.yellow, size: 60),
+              const SizedBox(height: 60),
+              LoaderGallery.dualRing(color: Colors.green, size: 60),
             ],
           ),
         ),
