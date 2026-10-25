@@ -65,6 +65,17 @@ class LoaderGalleryExampleApp extends StatelessWidget {
                   LoaderGallery.equalizer(color: Colors.cyan, size: 60),
                 ],
               ),
+
+              //
+              const SizedBox(height: 60),
+              //
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LoaderGallery.flipSquare(color: Colors.brown, size: 50),
+                  const SizedBox(width: 60),
+                ],
+              ),
             ],
           ),
         ),

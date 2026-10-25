@@ -9,6 +9,7 @@ import 'loaders/double_bounce_loader.dart';
 import 'loaders/dual_ring_loader.dart';
 import 'loaders/ellipse_swap_loader.dart';
 import 'loaders/equalizer_loader.dart';
+import 'loaders/flip_square_loader.dart';
 
 class LoaderGallery {
   LoaderGallery._();
@@ -101,5 +102,14 @@ class LoaderGallery {
     Duration duration = const Duration(milliseconds: 1000),
   }) {
     return EqualizerLoader(color: color, size: size, duration: duration);
+  }
+
+  // Flip Square
+  static Widget flipSquare({
+    Color color = Colors.white,
+    double size = 40.0,
+    Duration duration = const Duration(milliseconds: 1200),
+  }) {
+    return FlipSquareLoader(color: color, size: size, duration: duration);
   }
 }
