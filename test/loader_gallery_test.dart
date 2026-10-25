@@ -9,6 +9,7 @@ import 'package:loader_gallery/src/loaders/coin_flip_loader.dart';
 import 'package:loader_gallery/src/loaders/double_bounce_loader.dart';
 import 'package:loader_gallery/src/loaders/dual_ring_loader.dart';
 import 'package:loader_gallery/src/loaders/ellipse_swap_loader.dart';
+import 'package:loader_gallery/src/loaders/equalizer_loader.dart';
 
 void main() {
   group('LoaderGallery', () {
@@ -206,6 +207,35 @@ void main() {
       expect(loader.duration, const Duration(milliseconds: 1000));
     });
 
+    testWidgets('equalizer renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: Scaffold(body: LoaderGallery.equalizer())),
+      );
+
+      expect(find.byType(EqualizerLoader), findsOneWidget);
+    });
+
+    testWidgets('equalizer accepts customization', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.equalizer(
+              color: Colors.blue,
+              size: 50,
+              duration: const Duration(milliseconds: 800),
+            ),
+          ),
+        ),
+      );
+
+      final loader = tester.widget<EqualizerLoader>(
+        find.byType(EqualizerLoader),
+      );
+
+      expect(loader.color, Colors.blue);
+      expect(loader.size, 50);
+      expect(loader.duration, const Duration(milliseconds: 800));
+    });
     //
   });
 
