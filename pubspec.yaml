@@ -1,11 +1,13 @@
 name: loader_gallery
 description: A collection of beautiful and customizable loading animations for Flutter.
-version: 0.0.1
+version: 0.1.0
+
+homepage: https://github.com/PhooPwintSone/loader_gallery
 repository: https://github.com/PhooPwintSone/loader_gallery
 
 environment:
   sdk: ^3.12.1
-  flutter: ">=1.17.0"
+  flutter: ">=3.44.1"
 
 dependencies:
   flutter:

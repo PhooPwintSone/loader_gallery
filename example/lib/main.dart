@@ -74,6 +74,7 @@ class LoaderGalleryExampleApp extends StatelessWidget {
                 children: [
                   LoaderGallery.flipSquare(color: Colors.brown, size: 50),
                   const SizedBox(width: 60),
+                  LoaderGallery.foldingCube(color: Colors.green, size: 60),
                 ],
               ),
             ],

@@ -11,6 +11,7 @@ import 'package:loader_gallery/src/loaders/dual_ring_loader.dart';
 import 'package:loader_gallery/src/loaders/ellipse_swap_loader.dart';
 import 'package:loader_gallery/src/loaders/equalizer_loader.dart';
 import 'package:loader_gallery/src/loaders/flip_square_loader.dart';
+import 'package:loader_gallery/src/loaders/folding_cube_loader.dart';
 
 void main() {
   group('LoaderGallery', () {
@@ -240,7 +241,6 @@ void main() {
     });
 
     // Flip Square
-
     testWidgets('flipSquare renders correctly', (tester) async {
       await tester.pumpWidget(
         MaterialApp(home: Scaffold(body: LoaderGallery.flipSquare())),
@@ -269,6 +269,37 @@ void main() {
       expect(loader.color, Colors.blue);
       expect(loader.size, 50);
       expect(loader.duration, const Duration(milliseconds: 1000));
+    });
+
+    //foldingCube
+    testWidgets('foldingCube renders correctly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: Scaffold(body: LoaderGallery.foldingCube())),
+      );
+
+      expect(find.byType(FoldingCubeLoader), findsOneWidget);
+    });
+
+    testWidgets('foldingCube accepts customization', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: LoaderGallery.foldingCube(
+              color: Colors.blue,
+              size: 60,
+              duration: const Duration(milliseconds: 2000),
+            ),
+          ),
+        ),
+      );
+
+      final loader = tester.widget<FoldingCubeLoader>(
+        find.byType(FoldingCubeLoader),
+      );
+
+      expect(loader.color, Colors.blue);
+      expect(loader.size, 60);
+      expect(loader.duration, const Duration(milliseconds: 2000));
     });
     //
   });

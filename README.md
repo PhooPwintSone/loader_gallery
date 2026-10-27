@@ -1,39 +1,119 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Loader Gallery
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A collection of customizable loading animations for Flutter applications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+`loader_gallery` provides reusable loading indicators with simple APIs, so you can add animated loading states to your app without implementing each animation from scratch.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Multiple loading animations in one package
+- Customizable colors and sizes
+- Adjustable animation durations
+- Simple, consistent API through `LoaderGallery`
+- Lightweight Flutter widgets
+- Example app for previewing the animations
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add `loader_gallery` to your project's dependencies:
+
+```bash
+flutter pub add loader_gallery
+```
+
+Or add it manually to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  loader_gallery: ^0.1.0
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
+
+## Import
+
+```dart
+import 'package:loader_gallery/loader_gallery.dart';
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Use any loader through the `LoaderGallery` API:
 
 ```dart
-const like = 'sample';
+import 'package:flutter/material.dart';
+import 'package:loader_gallery/loader_gallery.dart';
+
+class LoadingExample extends StatelessWidget {
+  const LoadingExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child:LoaderGallery.flipSquare(color: Colors.brown, size: 50),
+,
+      ),
+    );
+  }
+}
 ```
 
-## Additional information
+## Available Loaders
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+The initial release includes these 10 loading animations:
+
+1. `LoaderGallery.bouncingBall()`
+2. `LoaderGallery.bouncingDots()`
+3. `LoaderGallery.chasingDots()`
+4. `LoaderGallery.coinFlip()`
+5. `LoaderGallery.doubleBounce()`
+6. `LoaderGallery.dualRing()`
+7. `LoaderGallery.ellipseSwap()`
+8. `LoaderGallery.equalizer()`
+9. `LoaderGallery.flipSquare()`
+10. `LoaderGallery.foldingCube()`
+
+## Customization
+
+Each loader supports its own set of customization options. Depending on the loader, you can adjust properties such as color, size, stroke width, dot size, and animation duration.
+
+For example:
+
+```dart
+LoaderGallery.dualRing(
+  color: Colors.purple,
+  size: 50,
+  strokeWidth: 4,
+  duration: const Duration(milliseconds: 1200),
+)
+```
+
+```dart
+LoaderGallery.equalizer(
+  color: Colors.green,
+  size: 40,
+  duration: const Duration(milliseconds: 1000),
+)
+```
+
+## Preview
+
+![Loader Gallery preview](screenshots/loader_gallery_preview.gif)
+
+## Example
+
+Explore the example application included in this repository to see the loaders in action.
+
+## Requirements
+
+- Flutter SDK: compatible with the version specified in `pubspec.yaml`
+- Dart SDK: compatible with the version specified in `pubspec.yaml`
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.

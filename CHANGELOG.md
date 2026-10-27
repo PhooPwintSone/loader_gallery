@@ -1,3 +1,7 @@
-## 0.0.1
+## 0.1.0
 
-* TODO: Describe initial release.
+- Added 10 customizable loading animations.
+- Introduced the centralized `LoaderGallery` API.
+- Added widget tests for rendering and customization.
+- Included an example application for previewing loaders.
+- Added package documentation and MIT license.
